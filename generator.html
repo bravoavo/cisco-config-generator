@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Config generator</title>
+		<!-- ШАБЛОН УСТРОЙСТВА -->
+		<script src="config_tempalte.js"></script>
+	</head>
+	<body>
+		<div id="newconf" style="padding:20px;">
+			<!--ФОРМА ДЛЯ ЗАПОЛНЕНИЯ-->
+			<h3>Генератор конфигураций</h3>
+			<label for="text">Создать VLAN номер:</label>
+			<input type="text" id="vlan" maxlength="4" placeholder="1234"></br>
+			<label for="text">Присвоить VLAN следующий IP адрес:</label>
+			<input type="text" id="ip" maxlength="15" placeholder="192.168.1.1"> / 
+			<input type="text" id="mask" maxlength="15" placeholder="255.255.255.0"></br>
+			<button type="submit" id="confcreate">Создать конфигурацию</button></br></br>
+			<!--РЕЗУЛЬТАТ-->
+			<h4>Конфиг для Cisco | <button type="submit" id="download">Скачать конфиг</button></br></h4>
+			<div id="config"></div>
+		</div>
+	</body>
+</html>
+<script src="actions.js"></script>
