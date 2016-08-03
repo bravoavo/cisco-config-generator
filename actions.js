@@ -1,4 +1,4 @@
-//ALEKSEY MAKSIMENKO 2016
+//ALEKSEY MAKSIMENKO 2016 (c)
 function begin() {
 
 	confcreate.onclick = function() {
