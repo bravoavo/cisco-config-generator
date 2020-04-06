@@ -1,0 +1,269 @@
+@echo off
+if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
+
+:: echo main code here
+:: pause
+
+cls
+
+route print -4
+
+netsh interface ip show config
+
+netsh interface ip show interfaces
+
+route.exe print ^|findstr "\<0.0.0.0\>"
+
+set /p VPNIFnum=" Enter VPN interface ID (number) to apply script:"
+netsh interface ip show config %VPNIFnum%
+
+
+REM -- Main part delete Inet-to-VPN routes
+
+route delete 0.0.0.0 IF %VPNIFnum%
+route delete 64.0.0.0 IF %VPNIFnum%
+route delete 80.0.0.0 IF %VPNIFnum%
+route delete 88.0.0.0 IF %VPNIFnum%
+route delete 92.0.0.0 IF %VPNIFnum%
+route delete 94.0.0.0 IF %VPNIFnum%
+route delete 95.0.0.0 IF %VPNIFnum%
+route delete 95.128.0.0 IF %VPNIFnum%
+route delete 95.160.0.0 IF %VPNIFnum%
+route delete 95.164.0.0 IF %VPNIFnum%
+route delete 95.166.0.0 IF %VPNIFnum%
+route delete 95.167.0.0 IF %VPNIFnum%
+route delete 95.167.128.0 IF %VPNIFnum%
+route delete 95.167.129.0 IF %VPNIFnum%
+route delete 95.167.129.128 IF %VPNIFnum%
+route delete 95.167.129.192 IF %VPNIFnum%
+route delete 95.167.129.201 IF %VPNIFnum%
+route delete 95.167.129.202 IF %VPNIFnum%
+route delete 95.167.129.204 IF %VPNIFnum%
+route delete 95.167.129.208 IF %VPNIFnum%
+route delete 95.167.129.224 IF %VPNIFnum%
+route delete 95.167.130.0 IF %VPNIFnum%
+route delete 95.167.132.0 IF %VPNIFnum%
+route delete 95.167.136.0 IF %VPNIFnum%
+route delete 95.167.144.0 IF %VPNIFnum%
+route delete 95.167.160.0 IF %VPNIFnum%
+route delete 95.167.192.0 IF %VPNIFnum%
+route delete 95.168.0.0 IF %VPNIFnum%
+route delete 95.176.0.0 IF %VPNIFnum%
+route delete 95.192.0.0 IF %VPNIFnum%
+route delete 96.0.0.0 IF %VPNIFnum%
+route delete 127.0.0.0 IF %VPNIFnum%
+route delete 127.0.0.1 IF %VPNIFnum%
+route delete 127.128.0.0 IF %VPNIFnum%
+route delete 127.255.255.255 IF %VPNIFnum%
+route delete 128.0.0.0 IF %VPNIFnum%
+route delete 169.254.0.0 IF %VPNIFnum%
+route delete 169.254.128.0 IF %VPNIFnum%
+route delete 169.254.255.255 IF %VPNIFnum%
+route delete 192.0.0.0 IF %VPNIFnum%
+route delete 192.168.8.0 IF %VPNIFnum%
+route delete 192.168.8.33 IF %VPNIFnum%
+route delete 192.168.8.128 IF %VPNIFnum%
+route delete 192.168.8.255 IF %VPNIFnum%
+route delete 193.0.0.0 IF %VPNIFnum%
+route delete 193.128.0.0 IF %VPNIFnum%
+route delete 193.160.0.0 IF %VPNIFnum%
+route delete 193.164.0.0 IF %VPNIFnum%
+route delete 193.164.128.0 IF %VPNIFnum%
+route delete 193.164.144.0 IF %VPNIFnum%
+route delete 193.164.146.0 IF %VPNIFnum%
+route delete 193.164.146.128 IF %VPNIFnum%
+route delete 193.164.146.160 IF %VPNIFnum%
+route delete 193.164.146.176 IF %VPNIFnum%
+route delete 193.164.146.184 IF %VPNIFnum%
+route delete 193.164.146.189 IF %VPNIFnum%
+route delete 193.164.146.190 IF %VPNIFnum%
+route delete 193.164.146.192 IF %VPNIFnum%
+route delete 193.164.147.0 IF %VPNIFnum%
+route delete 193.164.148.0 IF %VPNIFnum%
+route delete 193.164.152.0 IF %VPNIFnum%
+route delete 193.164.160.0 IF %VPNIFnum%
+route delete 193.164.192.0 IF %VPNIFnum%
+route delete 193.165.0.0 IF %VPNIFnum%
+route delete 193.166.0.0 IF %VPNIFnum%
+route delete 193.168.0.0 IF %VPNIFnum%
+route delete 193.176.0.0 IF %VPNIFnum%
+route delete 193.192.0.0 IF %VPNIFnum%
+route delete 194.0.0.0 IF %VPNIFnum%
+route delete 196.0.0.0 IF %VPNIFnum%
+route delete 200.0.0.0 IF %VPNIFnum%
+route delete 208.0.0.0 IF %VPNIFnum%
+route delete 216.0.0.0 IF %VPNIFnum%
+route delete 217.0.0.0 IF %VPNIFnum%
+route delete 217.8.0.0 IF %VPNIFnum%
+route delete 217.12.0.0 IF %VPNIFnum%
+route delete 217.14.0.0 IF %VPNIFnum%
+route delete 217.14.32.0 IF %VPNIFnum%
+route delete 217.14.48.0 IF %VPNIFnum%
+route delete 217.14.49.0 IF %VPNIFnum%
+route delete 217.14.49.16 IF %VPNIFnum%
+route delete 217.14.49.21 IF %VPNIFnum%
+route delete 217.14.49.22 IF %VPNIFnum%
+route delete 217.14.49.24 IF %VPNIFnum%
+route delete 217.14.49.32 IF %VPNIFnum%
+route delete 217.14.49.64 IF %VPNIFnum%
+route delete 217.14.49.128 IF %VPNIFnum%
+route delete 217.14.50.0 IF %VPNIFnum%
+route delete 217.14.52.0 IF %VPNIFnum%
+route delete 217.14.56.0 IF %VPNIFnum%
+route delete 217.14.64.0 IF %VPNIFnum%
+route delete 217.14.128.0 IF %VPNIFnum%
+route delete 217.15.0.0 IF %VPNIFnum%
+route delete 217.16.0.0 IF %VPNIFnum%
+route delete 217.32.0.0 IF %VPNIFnum%
+route delete 217.64.0.0 IF %VPNIFnum%
+route delete 217.128.0.0 IF %VPNIFnum%
+route delete 218.0.0.0 IF %VPNIFnum%
+route delete 220.0.0.0 IF %VPNIFnum%
+route delete 224.0.0.0 IF %VPNIFnum%
+route delete 240.0.0.0 IF %VPNIFnum%
+route delete 248.0.0.0 IF %VPNIFnum%
+route delete 252.0.0.0 IF %VPNIFnum%
+route delete 254.0.0.0 IF %VPNIFnum%
+route delete 255.0.0.0 IF %VPNIFnum%
+route delete 255.128.0.0 IF %VPNIFnum%
+route delete 255.192.0.0 IF %VPNIFnum%
+route delete 255.224.0.0 IF %VPNIFnum%
+route delete 255.240.0.0 IF %VPNIFnum%
+route delete 255.248.0.0 IF %VPNIFnum%
+route delete 255.252.0.0 IF %VPNIFnum%
+route delete 255.254.0.0 IF %VPNIFnum%
+route delete 255.255.0.0 IF %VPNIFnum%
+route delete 255.255.128.0 IF %VPNIFnum%
+route delete 255.255.192.0 IF %VPNIFnum%
+route delete 255.255.224.0 IF %VPNIFnum%
+route delete 255.255.240.0 IF %VPNIFnum%
+route delete 255.255.248.0 IF %VPNIFnum%
+route delete 255.255.252.0 IF %VPNIFnum%
+route delete 255.255.254.0 IF %VPNIFnum%
+route delete 255.255.255.0 IF %VPNIFnum%
+route delete 255.255.255.128 IF %VPNIFnum%
+route delete 255.255.255.192 IF %VPNIFnum%
+route delete 255.255.255.224 IF %VPNIFnum%
+route delete 255.255.255.240 IF %VPNIFnum%
+route delete 255.255.255.248 IF %VPNIFnum%
+route delete 255.255.255.252 IF %VPNIFnum%
+route delete 255.255.255.254 IF %VPNIFnum%
+
+
+REM -- New part for 10.* subnets
+
+route delete 10.0.0.0 IF %VPNIFnum%
+route delete 10.64.0.0 IF %VPNIFnum%
+route delete 10.65.255.255 IF %VPNIFnum%
+route delete 10.66.0.0 IF %VPNIFnum%
+route delete 10.66.255.255 IF %VPNIFnum%
+route delete 10.67.0.0 IF %VPNIFnum%
+route delete 10.67.127.255 IF %VPNIFnum%
+route delete 10.67.128.0 IF %VPNIFnum%
+route delete 10.67.128.127 IF %VPNIFnum%
+route delete 10.67.128.128 IF %VPNIFnum%
+route delete 10.67.128.135 IF %VPNIFnum%
+route delete 10.67.128.137 IF %VPNIFnum%
+route delete 10.67.128.138 IF %VPNIFnum%
+route delete 10.67.128.139 IF %VPNIFnum%
+route delete 10.67.128.140 IF %VPNIFnum%
+route delete 10.67.128.143 IF %VPNIFnum%
+route delete 10.67.128.144 IF %VPNIFnum%
+route delete 10.67.128.159 IF %VPNIFnum%
+route delete 10.67.128.160 IF %VPNIFnum%
+route delete 10.67.128.191 IF %VPNIFnum%
+route delete 10.67.128.192 IF %VPNIFnum%
+route delete 10.67.128.255 IF %VPNIFnum%
+route delete 10.67.129.0 IF %VPNIFnum%
+route delete 10.67.129.255 IF %VPNIFnum%
+route delete 10.67.130.0 IF %VPNIFnum%
+route delete 10.67.131.255 IF %VPNIFnum%
+route delete 10.67.132.0 IF %VPNIFnum%
+route delete 10.67.135.255 IF %VPNIFnum%
+route delete 10.67.136.0 IF %VPNIFnum%
+route delete 10.67.143.255 IF %VPNIFnum%
+route delete 10.67.144.0 IF %VPNIFnum%
+route delete 10.67.159.255 IF %VPNIFnum%
+route delete 10.67.160.0 IF %VPNIFnum%
+route delete 10.67.191.255 IF %VPNIFnum%
+route delete 10.67.192.0 IF %VPNIFnum%
+route delete 10.67.255.255 IF %VPNIFnum%
+route delete 10.68.0.0 IF %VPNIFnum%
+route delete 10.71.255.255 IF %VPNIFnum%
+route delete 10.72.0.0 IF %VPNIFnum%
+route delete 10.79.255.255 IF %VPNIFnum%
+route delete 10.80.0.0 IF %VPNIFnum%
+route delete 10.95.255.255 IF %VPNIFnum%
+route delete 10.96.0.0 IF %VPNIFnum%
+route delete 10.127.255.255 IF %VPNIFnum%
+route delete 10.128.0.0 IF %VPNIFnum%
+route delete 10.191.128.0 IF %VPNIFnum%
+route delete 10.191.155.177 IF %VPNIFnum%
+route delete 10.191.191.255 IF %VPNIFnum%
+route delete 10.191.208.0 IF %VPNIFnum%
+route delete 10.191.217.124 IF %VPNIFnum%
+route delete 10.191.223.255 IF %VPNIFnum%
+route delete 10.255.255.255 IF %VPNIFnum%
+route delete 10.191.223.181 IF %VPNIFnum%
+route delete 10.191.232.0 IF %VPNIFnum%
+route delete 10.191.237.146 IF %VPNIFnum%
+route delete 10.191.239.255 IF %VPNIFnum%
+
+route add 10.0.0.0 MASK 255.192.0.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.64.0.0 MASK 255.254.0.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.65.255.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.66.0.0 MASK 255.255.0.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.66.255.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.0.0 MASK 255.255.128.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.127.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.0 MASK 255.255.255.128 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.127 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.128 MASK 255.255.255.248 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.135 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.137 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.138 MASK 255.255.255.254 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.139 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.140 MASK 255.255.255.252 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.143 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.144 MASK 255.255.255.240 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.159 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.160 MASK 255.255.255.224 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.191 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.192 MASK 255.255.255.192 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.128.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.129.0 MASK 255.255.255.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.129.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.130.0 MASK 255.255.254.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.131.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.132.0 MASK 255.255.252.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.135.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.136.0 MASK 255.255.248.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.143.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.144.0 MASK 255.255.240.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.159.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.160.0 MASK 255.255.224.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.191.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.192.0 MASK 255.255.192.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.67.255.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.68.0.0 MASK 255.252.0.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.71.255.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.72.0.0 MASK 255.248.0.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.79.255.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.80.0.0 MASK 255.240.0.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.95.255.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.96.0.0 MASK 255.224.0.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.127.255.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.128.0.0 MASK 255.128.0.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.191.128.0 MASK 255.255.192.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.191.155.177 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.191.191.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.191.208.0 MASK 255.255.240.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.191.217.124 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.191.223.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.255.255.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.191.223.181 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.191.232.0 MASK 255.255.248.0 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.191.237.146 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+route add 10.191.239.255 MASK 255.255.255.255 0.0.0.0 METRIC 1 IF %VPNIFnum%
+
+pause
